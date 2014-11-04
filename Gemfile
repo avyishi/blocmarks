@@ -40,3 +40,7 @@ gem 'devise'
 gem 'foundation-rails'
 
 gem 'simple_form', '~> 3.0.0.rc'
+
+gem 'omniauth-facebook'
+
+gem 'figaro', '1.0'

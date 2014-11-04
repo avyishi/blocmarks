@@ -11,7 +11,9 @@
       <% @bookmarks.each do |bookmark| %>
         <tr>
           <td><%= link_to bookmark.title, bookmark.url %></td>
+          <td>My likes go here</td>
         </tr>
+
       <% end %>
     </tbody>
   </table>
@@ -23,7 +25,6 @@
     <%= link_to "Begin", new_user_registration_path, :class => "button button-large" %>
   </div>
  
-  <hr>
  
   <div class="row">
     <div class="large-8 columns">
