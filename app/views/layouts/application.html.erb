@@ -12,10 +12,14 @@
   </head>
 
   <body>
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#blocmarks-navbar-collapse">
+      <h3>
+        <%= link_to 'Blocmarks', root_path, class: 'navbar-brand' %>  </button></h3>
+      </div>
+
   <div class="container">
-<ul class="nav nav-tabs">
-       <li><%= link_to "Blocmarks", root_path %></li>
-       </ul>
+
 
        <div class="pull-right user-info">
            <% if current_user %>

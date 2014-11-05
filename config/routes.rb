@@ -1,8 +1,11 @@
 Blocmarks::Application.routes.draw do
+  devise_for :users
   resources :bookmarks
   resources :likes
 
-  devise_for :users
+  
   
   root :to => "site#index"
+
+  post :incoming, to: 'incoming#create'
 end
