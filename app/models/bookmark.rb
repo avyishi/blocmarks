@@ -1,4 +1,7 @@
 class Bookmark < ActiveRecord::Base
+  #include SimpleHashtag::Hashtaggable
+
+  
   belongs_to :user
 
   validates :user_id, presence: true
