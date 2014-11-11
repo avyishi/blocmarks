@@ -6,8 +6,13 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
 
-  has_many :bookmarks
-  has_many :likes
+  has_many :bookmarks, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  #has_many :liked_bookmarks
+
+  def liked(bookmark)
+    likes.where(bookmark: bookmark).first
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

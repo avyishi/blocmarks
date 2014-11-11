@@ -5,11 +5,13 @@ class BookmarksController < ApplicationController
   # GET /bookmarks.json
   def index
     @bookmarks = current_user.bookmarks.all
+
   end
 
   # GET /bookmarks/1
   # GET /bookmarks/1.json
   def show
+   @bookmark = Bookmark.find(params[:id])
   end
 
   # GET /bookmarks/new
@@ -48,6 +50,17 @@ class BookmarksController < ApplicationController
   def destroy
     @bookmark.destroy
     redirect_to bookmarks_url, notice: 'Bookmark was successfully destroyed.'
+  end
+
+  def like
+    bookmark = resource.like current_user
+    Event.bookmark_liked!(bookmark)
+    redirect_to discussion_url(resource.discussion)
+  end
+
+  def unlike
+    resource.unlike current_user
+    redirect_to discussion_url(resource.discussion)
   end
 
   private

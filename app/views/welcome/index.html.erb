@@ -1,0 +1,12 @@
+<% if current_user %>
+ 
+<% else %>
+  <div class="text-center">
+    <h1>Welcome to Blocmarks!</h1>
+    <p>Social Bookmarking with Email Integration</p>
+    <%= link_to "Begin", new_user_registration_path, :class => "button button-large" %>
+  </div>
+
+<% end %>
+
+<H2 class="text-center">Yes, you're really signed in!</H2>

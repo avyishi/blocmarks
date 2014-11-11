@@ -1,12 +1,14 @@
+<% if current_user %>
 <h1>Listing all blocmarks</h1>
-
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Url</th>
-      <th>Likes</th>
-      <th colspan="3"></th>
+      <th>Time created</th>
+    
+
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -15,17 +17,35 @@
       <tr>
         <td><%= bookmark.title %></td>
         <td><%= bookmark.url %></td>
-        <td></td>
+        <td>Created <%= time_ago_in_words(bookmark.created_at) %> ago</td>
+
         <td><%= link_to 'Show', bookmark %></td>
         <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
         <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <td><%=link_to "Like", bookmark_likes_path(bookmark), method: :post, remote: true  %>     </tr></td>
+
+
+     
+
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-
-
+<% end %>
 <%= link_to 'New Bookmark', new_bookmark_path %>
+
+<% if current_user %>
+ 
+<% else %>
+  <div class="panel">
+    <h1>Blocmarks!</h1>
+    <p>Social Bookmarking with Email Integration</p>
+    <%= link_to "Begin", new_user_registration_path, :class => "button button-large" %>
+  </div>
+ 
+  <div class="large-4 columns">
+    <h3>About this app</h3>
+    Created by Chéri</p>
+  </div>
+<% end %>

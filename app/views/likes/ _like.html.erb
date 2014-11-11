@@ -1,0 +1,13 @@
+<% if bookmark.user == current_user %>
+  <%= link_to bookmark_path(bookmark), class: 'btn btn-danger center-block space-bottom', method: :delete  do %>
+    <i class="glyphicon glyphicon-remove"> </i>&nbsp; Delete Blocmark
+  <% end %>
+<% elsif bookmark.liking_users.include?(current_user) %>
+  <%= link_to bookmark_like_path(bookmark), class: 'btn btn-danger center-block space-bottom', method: :delete do %>
+    <i class="glyphicon glyphicon-star"> </i>&nbsp; Unlike Blocmark
+  <% end %>
+<% else %>
+  <%= link_to bookmark_like_path(bookmark), class: 'btn btn-primary center-block space-bottom', method: :post do %>
+    <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Like Blocmark
+  <% end %>
+<% end %>
