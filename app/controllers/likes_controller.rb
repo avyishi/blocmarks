@@ -16,7 +16,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @bookmark = Bookmark.find(params[:bookmark_id])
+    @bookmark = Bookmark.find(params[:bookmark])
     like = current_user.likes.find_by(bookmark: @bookmark)
 
     if like.destroy

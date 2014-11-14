@@ -20,6 +20,7 @@ class DevelopmentMailInterceptor
     message.to =  'avyishi@yahoo.com'
     message.cc = nil
     message.bcc = nil
+    
   end
 end
 

@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20141111103723) do
   end
 
   create_table "likes", force: true do |t|
+    t.integer  "bookmark_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
