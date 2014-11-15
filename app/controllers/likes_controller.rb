@@ -1,14 +1,12 @@
 class LikesController < ApplicationController
+  
   def create
-    respond_to do |format|
-    format.html { .. your liking code .. }
-    format.js {.. your liking code .. }
      
-    @bookmark = Bookmark.find(params[:bookmark])
-     like = current_user.likes.build(bookmark: bookmark)
-
+    @bookmark = Bookmark.find(params[:bookmark_id])
+     like = current_user.likes.build(bookmark: @bookmark)
+     #authorize like
      if like.save
-      redirect_to :back, notice: "Blocmark liked!"
+      redirect_to :back, notice: "Bookmark liked!"
     else
       flash[:error] = "There was an error liking this blocmark, please try again"
       redirect_to :back
@@ -16,15 +14,16 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @bookmark = Bookmark.find(params[:bookmark])
+    @bookmark = Bookmark.find(params[:bookmark_id])
     like = current_user.likes.find_by(bookmark: @bookmark)
-
+    #authorize like
     if like.destroy
-      redirect_to :back, notice: "Blocmark unliked!"
+      redirect_to :back, notice: "Bookmark unliked!"
     else
       flash[:error] = "There was an error unliking this blocmark, please try again"
       redirect_to :back
     end
   end
+end
 
               

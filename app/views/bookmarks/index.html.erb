@@ -1,5 +1,5 @@
 <% if current_user %>
-<h1>Listing all blocmarks</h1>
+<h1>My blocmarks</h1>
 <table>
   <thead>
     <tr>
@@ -21,18 +21,8 @@
 
         <td><%= link_to 'Show', bookmark %></td>
         <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-        <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%=link_to "Like", bookmark_likes_path(bookmark), method: :post, remote: true  %>     </tr></td>
-
-        <% if current_user.liked? bookmark %>
-  <%= link_to "Dislike", dislike_bookmark_path(@bookmark), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Like', toggle_href: like_bookmark_path(@bookmark), id: @bookmark } %>
-<% else %>
-  <%= link_to "Like", like_bookamrk_path(@bookmark), class: 'vote', method: :put, remote: true, data: { toggle_text: 'Dislike', toggle_href: dislike_bookmark_path(@bookmark), id: @bookmark } %>
-<% end %>
-
-
-     
-
+        <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+      </tr>
     <% end %>
   </tbody>
 </table>

@@ -1,6 +1,5 @@
 Blocmarks::Application.routes.draw do
  
-
   get 'topics/index'
 
   get 'topics/new'
@@ -22,9 +21,10 @@ Blocmarks::Application.routes.draw do
 
   get 'welcome/bookmarks'
   get 'welcome/about'
+
   
   
-  root to: 'welcome#index'
+  root to: 'site#index'
 
   post :incoming, to: 'incoming#create'
 end
