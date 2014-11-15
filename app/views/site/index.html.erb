@@ -1,9 +1,11 @@
 <% if current_user %>
   <h2>All Current Bookmarks</h2>
-  <table style="width: 100%">
+  <table style="width: 80%">
     <thead>
       <tr>
-        <th>Url</th>
+        <th>Bookmarks</th>
+        <th>Created</th>
+         <th>Like/Unlike</th>
       </tr>
     </thead>
  
@@ -11,10 +13,14 @@
       <% @bookmarks.each do |bookmark| %>
         <tr>
           <td><%= link_to bookmark.title, bookmark.url %></td>
+          <%= link_to [bookmark, Like.new], method: :post do %><u>Like</u><% end %>
           <td>
             <small>
               Created <%= time_ago_in_words(bookmark.created_at) %> ago <%= bookmark.user.name %>
              </small>
+          </td>
+          <td>
+          <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
           </td>
         </tr>
 
