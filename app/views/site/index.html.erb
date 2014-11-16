@@ -13,7 +13,7 @@
       <% @bookmarks.each do |bookmark| %>
         <tr>
           <td><%= link_to bookmark.title, bookmark.url %></td>
-          <%= link_to [bookmark, Like.new], method: :post do %><u>Like</u><% end %>
+          
           <td>
             <small>
               Created <%= time_ago_in_words(bookmark.created_at) %> ago <%= bookmark.user.name %>
