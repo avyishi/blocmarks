@@ -24,7 +24,7 @@ class TopicsController < ApplicationController
       @topic.save
     end
   end
-
+  
   def destroy
     @topic = Topic.find(params[:id])
     name = @topic.name
