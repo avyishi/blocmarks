@@ -13,8 +13,8 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:user])
-    @bookmarks = @topic.bookmarks
+    @topic = Topic.find(params[:id])
+   # @bookmarks = @topic.bookmarks
   end
 
   def create

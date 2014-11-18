@@ -1,17 +1,32 @@
 <h1>Topics</h1>
 
-<div class="row">
-  <div class="col-md-8">
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Time created</th>
+    
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
     <% @topics.each do |topic| %>
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= link_to topic.name, topic %>
-          </h4>
-          
-        </div>
-      </div>
+      <tr>
+        <td><%= topic.name %></td>
+        <td>Created <%= time_ago_in_words(topic.created_at) %> ago</td>
+
+        <td><%= link_to 'Show', topic %></td>
+        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
+        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+      </tr>
     <% end %>
+  </tbody>
+</table>
   </div>
   <div class="col-md-4">
     <% if true %>
