@@ -1,15 +1,11 @@
 Blocmarks::Application.routes.draw do
- 
-
-
   get 'hashtags/index'
-
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  #resources :users, only: [:show, :update]
   resources :topics 
     resources :bookmarks do 
     resources :likes, only: [:create, :destroy]
   end
-
   resources :likes, :users
   
   #devise_scope :user do
@@ -19,9 +15,6 @@ Blocmarks::Application.routes.draw do
   get 'welcome/bookmarks'
   get 'welcome/about'
 
-
-  
-  
   root to: 'site#index'
 
   post :incoming, to: 'incoming#create'

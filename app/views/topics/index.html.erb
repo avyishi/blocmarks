@@ -1,21 +1,16 @@
 <h1>Topics</h1>
-
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Time created</th>
-    
-      <th colspan="5"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @topics.each do |topic| %>
       <tr>
         <td><%= topic.name %></td>
         <td>Created <%= time_ago_in_words(topic.created_at) %> ago</td>
-
         <td><%= link_to 'Show', topic %></td>
         <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
         <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
@@ -23,10 +18,8 @@
     <% end %>
   </tbody>
 </table>
+
+  <div>
+    <%= link_to "New Topic", new_topic_path %>
   </div>
-  <div class="col-md-4">
-    <% if true %>
-      <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
-    <% end %>
-  </div>
-</div>
+

@@ -1,13 +1,13 @@
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+
   # GET /bookmarks
   # GET /bookmarks.json
   def index
     @bookmarks = current_user.bookmarks.all
-
   end
-
+  
   # GET /bookmarks/1
   # GET /bookmarks/1.json
   def show
@@ -27,7 +27,6 @@ class BookmarksController < ApplicationController
   # POST /bookmarks.json
   def create
     @bookmark = current_user.bookmarks.new(bookmark_params)
-
     if @bookmark.save
       redirect_to @bookmark, notice: 'Bookmark was successfully created.'
     else

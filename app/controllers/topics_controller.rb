@@ -14,15 +14,23 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-   # @bookmarks = @topic.bookmarks
   end
 
   def create
     @topic = Topic.find_by_name(params[:name])
-    unless @topic
-      @topic = Topic.new(name: params[:name])
-      @topic.save
+    if @topic.save
+      redirect_to @topic
+    else
+      render action: 'show'
     end
+  end
+
+  def update
+    #if @topic.update
+     # redirect_to @topic, notice: 'Topic was successfully updated.'
+    #else
+     # render action: 'edit'
+   # end
   end
   
   def destroy

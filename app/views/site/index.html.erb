@@ -5,7 +5,6 @@
       <tr>
         <th>Bookmarks</th>
         <th>Created</th>
-         <th>Like/Unlike</th>
       </tr>
     </thead>
  
@@ -18,9 +17,6 @@
             <small>
               Created <%= time_ago_in_words(bookmark.created_at) %> ago <%= bookmark.user.name %>
              </small>
-          </td>
-          <td>
-          <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
           </td>
         </tr>
 
