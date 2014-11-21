@@ -21,14 +21,14 @@ ActiveRecord::Schema.define(version: 20141115071241) do
   end
 
   add_index "bookmark_topics", ["bookmark_id"], name: "index_bookmark_topics_on_bookmark_id"
-  add_index "bookmark_topics", ["topic_id"], name: "index_bookmark_topics_on_topic_id"
 
   create_table "bookmarks", force: true do |t|
     t.string   "title"
     t.string   "url"
+    t.integer  "user_id"
+    t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "likes", force: true do |t|

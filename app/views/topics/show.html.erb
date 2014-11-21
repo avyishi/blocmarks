@@ -1,5 +1,19 @@
 <h2>Topics:</h2>
-<%= @topic %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Clikin'</th>
+    </tr>
+    </thead>  
+    <tbody>
+      <%= @topic.bookmarks.each do |b| %>
+        <tr><td><%= b.name %></td><td><%= b.url %></td></tr>
+        <% end %>
+
+    </tbody>
+</table>
+
 
 
 

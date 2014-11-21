@@ -1,8 +1,7 @@
 class BookmarkTopics < ActiveRecord::Migration
   def change
-    create_table :bookmark_topics do |t|
-      t.references :bookmark, index: true
-      t.references :topic, index: true
+    change_table :bookmarks do |t|
+      t.integer :topic_id, index: true
 
       t.timestamps
     end
