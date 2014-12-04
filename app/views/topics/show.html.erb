@@ -1,21 +1,26 @@
-<h2>Topics:</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Clikin'</th>
-    </tr>
-    </thead>  
-    <tbody>
-      <%= @topic.bookmarks.each do |b| %>
-        <tr><td><%= b.name %></td><td><%= b.url %></td></tr>
-        <% end %>
+<h2><%= @topic.name %></h2> <br>
+<% if true %>
+  <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-info' %><br>
+<% end %>
+<% if true %>
+  <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %><br>
+<% end %>
 
-    </tbody>
-</table>
-
-
-
-
-              
-
+<div class="row">
+  <div class="col-md-8">
+    <%= @topic.name %>
+    <% @bookmarks.each do |bookmark| %><br>
+      <%= link_to bookmark.url, bookmark.url %><br>
+        <%= render partial: 'likes/like', locals: { topic: @topic, bookmark: bookmark } %><br>
+          <%= link_to "Delete Bookmark", [@topic, bookmark], method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure you want to delete this topic?' } %>
+         
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+    <div>
+      <%= link_to "New Bookmark", new_bookmark_path(@topic), class: 'btn btn-success' %>
+    </div>
+  </div>
+</div>
