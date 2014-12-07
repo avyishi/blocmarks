@@ -1,9 +1,8 @@
 Blocmarks::Application.routes.draw do
-  get 'hashtags/index'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   #resources :users, only: [:show, :update]
   resources :topics do
-    resources :bookmarks, except: [:index]
+    resources :bookmarks, except: [:new, :create]
   end
 
    resources :bookmarks do 
@@ -15,7 +14,7 @@ Blocmarks::Application.routes.draw do
     #get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   #end
 
-  get 'welcome/bookmarks'
+
   get 'welcome/about'
 
   root to: 'site#index'

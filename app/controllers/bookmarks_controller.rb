@@ -8,10 +8,12 @@ class BookmarksController < ApplicationController
   
   def show
    @bookmark = Bookmark.find(params[:id])
+   @topic = Topic.find(params[:topic_id])
   end
 
   def new
     @bookmark = current_user.bookmarks.new
+   # @topic = Topic.find(params[:topic_id])
   end
 
   def edit
