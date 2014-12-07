@@ -2,8 +2,11 @@ Blocmarks::Application.routes.draw do
   get 'hashtags/index'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   #resources :users, only: [:show, :update]
-  resources :topics 
-    resources :bookmarks do 
+  resources :topics do
+    resources :bookmarks, except: [:index]
+  end
+
+   resources :bookmarks do 
     resources :likes, only: [:create, :destroy]
   end
   resources :likes, :users

@@ -1,7 +1,5 @@
 class Bookmark < ActiveRecord::Base
   #include SimpleHashtag::Hashtaggable
-
-
   belongs_to :user
   has_many :likes, dependent: :destroy
   belongs_to :topic

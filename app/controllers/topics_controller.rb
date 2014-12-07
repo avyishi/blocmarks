@@ -3,11 +3,14 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.all
     @like = Like.new
+   # @topics = @topics.sort {|a, b| b.bookmarks <=> a.bookmarks }
   end
 
   def show
+    #@topic = Topic.find_by_name(params[:id])
     @topic = Topic.find(params[:id])
     @bookmarks = @topic.bookmarks
+  
   end
 
   def new
