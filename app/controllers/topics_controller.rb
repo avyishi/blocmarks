@@ -21,13 +21,13 @@ class TopicsController < ApplicationController
   end
 
   def create
-  @topic = Topic.new(params.require(:topic).permit(:name))
-     if @topic.save
-       redirect_to @topic, notice: "Topic was saved successfully."
-     else
-       flash[:error] = "Error creating topic. Please try again."
-       render :new
-     end
+    @topic = Topic.new(params.require(:topic).permit(:name, :public))
+    if @topic.save
+      redirect_to @topic, notice: "Topic was saved successfully."
+    else
+      flash[:error] = "Error creating topic. Please try again."
+      render :new
+    end
       #@topic = Topic.find_by_name(params[:name])
     #unless @topic
       #@topic = Topic.new(name: params[:name])
@@ -36,6 +36,15 @@ class TopicsController < ApplicationController
   #end
    end
 
+  def update
+    @topic = Topic.find(params[:id])
+    if @topic.update(topic_params)
+      redirect_to @topic, notice: 'Topic successfully updated.'
+    else
+      render action: 'edit'
+    end
+  end
+  
   def destroy
     @topic = Topic.find(params[:id])
     name = @topic.name
@@ -49,14 +58,7 @@ class TopicsController < ApplicationController
     end
   end
 
-  def update
-    @topic = Topic.find(params[:id])
-    if @topic.update(topic_params)
-      redirect_to @topic, notice: 'Movie successfully updated.'
-    else
-      render action: 'edit'
-    end
-  end
+  
 
   private
     def topic_params

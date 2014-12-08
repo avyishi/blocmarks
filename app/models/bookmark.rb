@@ -6,6 +6,7 @@ class Bookmark < ActiveRecord::Base
   default_scope { order('created_at DESC') } 
 
   validates :user_id, presence: true
-  validates :title, length: {minimum: 5}, presence: true
+  validates :title, length: {minimum: 2}, presence: true
+  validates :topic, presence: true
   #validates :url, format: {with: Regexp.new(URI::regexp(%w(http https)))}, presence: true
 end

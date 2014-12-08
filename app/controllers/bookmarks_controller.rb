@@ -7,19 +7,13 @@ class BookmarksController < ApplicationController
   end
   
   def show
-<<<<<<< HEAD
-   @bookmark = Bookmark.find(params[:id])
-   @topic = Topic.find(params[:topic_id])
-=======
     @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
->>>>>>> nesting-bookmarks
   end
 
   def new
     @topic = Topic.find(params[:topic_id])
     @bookmark = current_user.bookmarks.new
-   # @topic = Topic.find(params[:topic_id])
   end
 
   def edit
@@ -45,7 +39,6 @@ class BookmarksController < ApplicationController
   def update
     @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
-
     #if @bookmark.update(bookmark_params)
     if @bookmark.update_attributes(params.require(:bookmark).permit(:title))
       flash[:notice] = "Bookmark was updated."
