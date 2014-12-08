@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
 
   def liked(bookmark)
-    likes.where(bookmark: bookmark).first
+    likes.where(bookmark: bookmark.id).first
   end
 
   def self.from_omniauth(auth)
