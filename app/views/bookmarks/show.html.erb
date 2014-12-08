@@ -11,6 +11,6 @@
   <%= render partial: 'likes/like', locals: { bookmark: @bookmark } %>
   <br>
 
-  <%= link_to 'Edit', edit_bookmark_path(@bookmark) %> |
-  <%= link_to 'Back', bookmarks_path %>
+  <%= link_to 'Edit', edit_topic_bookmark_path(@topic, @bookmark), class: 'btn btn-info' %> |
+  <%= link_to 'Back', topic_bookmark_path %>
 </p>
