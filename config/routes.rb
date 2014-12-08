@@ -5,9 +5,9 @@ Blocmarks::Application.routes.draw do
     resources :bookmarks, except: [:new, :create]
   end
 
-   resources :bookmarks do 
+   #resources :bookmarks do 
     resources :likes, only: [:create, :destroy]
-  end
+  #end
   resources :likes, :users
   
   #devise_scope :user do

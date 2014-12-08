@@ -6,26 +6,37 @@ class TopicsController < ApplicationController
    # @topics = @topics.sort {|a, b| b.bookmarks <=> a.bookmarks }
   end
 
-  def show
-    #@topic = Topic.find_by_name(params[:id])
-    @topic = Topic.find(params[:id])
-    @bookmarks = @topic.bookmarks
-  
-  end
-
   def new
     @topic = Topic.new
   end
 
-   def create
-    @topic = Topic.find_by_name(params[:name])
-    unless @topic
-      @topic = Topic.new(name: params[:name])
-      @topic.save
-    end
+  def show
+    #@topic = Topic.find_by_name(params[:id])
+    @topic = Topic.find(params[:id])
+    @bookmarks = @topic.bookmarks
   end
 
-def destroy
+  def edit
+    @topic = Topic.find(params[:id])
+  end
+
+  def create
+  @topic = Topic.new(params.require(:topic).permit(:name))
+     if @topic.save
+       redirect_to @topic, notice: "Topic was saved successfully."
+     else
+       flash[:error] = "Error creating topic. Please try again."
+       render :new
+     end
+      #@topic = Topic.find_by_name(params[:name])
+    #unless @topic
+      #@topic = Topic.new(name: params[:name])
+      #@topic.save
+    #end
+  #end
+   end
+
+  def destroy
     @topic = Topic.find(params[:id])
     name = @topic.name
 
@@ -38,25 +49,12 @@ def destroy
     end
   end
 
-  def edit
-    @topic = Topic.find(params[:id])
-  end
-
   def update
-     @topic = Topic.find(params[:id])
+    @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
       redirect_to @topic, notice: 'Movie successfully updated.'
     else
       render action: 'edit'
-    end
-  end
-
-  def create
-    @topic = Topic.new(topic_params)
-    if @topic.save
-      redirect_to @topic
-    else
-      render :new
     end
   end
 
