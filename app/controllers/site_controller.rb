@@ -6,4 +6,8 @@ class SiteController < ApplicationController
   def today
     @time = Time.now
   end
+
+  def show
+    @bookmark = Bookmark.find(params[:id])
+  end
 end

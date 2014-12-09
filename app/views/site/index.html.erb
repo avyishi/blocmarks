@@ -5,18 +5,12 @@
     <thead>
       <tr>
         <th>Bookmarks</th>
-        <th>Created</th>
       </tr>
     </thead>
     <tbody>
       <% @bookmarks.each do |bookmark| %>
         <tr>
-          <td><%= link_to bookmark.title %></td>
-                    <td>
-            <small>
-              Created by <%= bookmark.user.name %>
-             </small>
-          </td>
+          <td><%= link_to bookmark.title, @bookmark %></td>
         </tr>
 
       <% end %>
