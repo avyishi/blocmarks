@@ -1,5 +1,6 @@
 <% if current_user %>
   <h2>All Current Bookmarks</h2>
+
   <table style="width: 80%">
     <thead>
       <tr>
@@ -11,8 +12,7 @@
       <% @bookmarks.each do |bookmark| %>
         <tr>
           <td><%= link_to bookmark.title %></td>
-          
-          <td>
+                    <td>
             <small>
               Created by <%= bookmark.user.name %>
              </small>
@@ -44,3 +44,5 @@
     </div>
   </div>
 <% end %>
+ <h5>Current Date and Time: <%= Time.now %></h5>
+
